@@ -41,3 +41,46 @@ const swiper = new Swiper('.swiper', {
     },
   },
 });
+
+async function getPopularMovies() {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${
+        API - KEY
+      }&language=en-US&page=1`
+    );
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function displayPopularMovies() {
+  const pmContainer = document.querySelector('#popular-movies');
+  getPopularMovies().then((movies) => {
+    let popularMoviesHTML = '';
+    movies.forEach((movie) => {
+      popularMoviesHTML += ` 
+        <div class="card">
+          <a href="movie-details.html?id=${movie.id}">
+            <img
+              src="https://image.tmdb.org/t/p/w500/${movie.poster_path}"
+              class="card-img-top"
+              alt="${movie.title}"
+            />
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">${movie.title}</h5>
+            <p class="card-text">
+              <small class="text-muted">Release: ${movie.release_date}</small>
+            </p>
+          </div>
+        </div>
+      `;
+    });
+    pmContainer.innerHTML = popularMoviesHTML;
+  });
+}
+
+displayPopularMovies();
