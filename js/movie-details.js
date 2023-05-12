@@ -18,18 +18,18 @@ const updateMovieDetails = async () => {
   const movieTitle = document.querySelector('#movie-details h2');
   const moviePoster = document.querySelector('#movie-details img');
   const movieOverview = document.querySelector('#movie-details p:last-of-type');
-  const movieGenres = document.querySelector('#movie-details .list-group');
+  const movieGenres = document.querySelector('#movie-details #generes');
   const movieBudget = document.querySelector(
-    '#movie-details ul li:nth-of-type(1)'
+    '#movie-details ul:last-of-type li:nth-of-type(1)'
   );
   const movieRevenue = document.querySelector(
-    '#movie-details ul li:nth-of-type(2)'
+    '#movie-details ul:last-of-type li:nth-of-type(2)'
   );
   const movieRuntime = document.querySelector(
-    '#movie-details ul li:nth-of-type(3)'
+    '#movie-details ul:last-of-type li:nth-of-type(3)'
   );
   const movieStatus = document.querySelector(
-    '#movie-details ul li:nth-of-type(4)'
+    '#movie-details ul:last-of-type li:nth-of-type(4)'
   );
   const movieCompanies = document.querySelector('#movie-details .list-group');
 
@@ -39,8 +39,8 @@ const updateMovieDetails = async () => {
   movieGenres.innerHTML = movieDetails.genres
     .map((genre) => `<li>${genre.name}</li>`)
     .join('');
-  movieBudget.innerText = `$ ${movieDetails.budget.toLocaleString()}`;
-  movieRevenue.innerText = `$ ${movieDetails.revenue.toLocaleString()}`;
+  movieBudget.innerText = `${movieDetails.budget.toLocaleString()}`;
+  movieRevenue.innerText = `${movieDetails.revenue.toLocaleString()}`;
   movieRuntime.innerText = `${movieDetails.runtime} minutes`;
   movieStatus.innerText = movieDetails.status;
   movieCompanies.innerText = movieDetails.production_companies
