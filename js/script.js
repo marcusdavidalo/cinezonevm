@@ -84,3 +84,5 @@ function displayPopularMovies() {
 }
 
 displayPopularMovies();
+
+console.log('adas');
