@@ -333,7 +333,7 @@ if (
     return data;
   };
 
-  const renderResults = (results) => {
+  const displayResults = (results) => {
     const resultsContainer = document.getElementById('search-results');
     let resultsHTML = '';
     results.forEach((result) => {
@@ -375,7 +375,7 @@ if (
     if (currentPage > 1) {
       currentPage--;
       const results = await getSearched(currentPage);
-      renderResults(results.results);
+      displayResults(results.results);
       updatePageCounter(currentPage, results.total_pages);
     }
   };
@@ -384,14 +384,14 @@ if (
     const results = await getSearched(currentPage + 1);
     if (results.page <= results.total_pages) {
       currentPage++;
-      renderResults(results.results);
+      displayResults(results.results);
       updatePageCounter(currentPage, results.total_pages);
     }
   };
 
   const initPagination = async () => {
     const results = await getSearched(currentPage);
-    renderResults(results.results);
+    displayResults(results.results);
     updatePageCounter(currentPage, results.total_pages);
 
     const prevButton = document.getElementById('prev');
