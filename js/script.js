@@ -166,6 +166,43 @@ if (window.location.href.indexOf('movie-details.html') > -1) {
 // ############################################################
 // TV Shows Page
 if (window.location.href.indexOf('shows.html') > -1) {
+  async function getPopularShows() {
+    try {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}`
+      );
+      const data = await response.json();
+      return data.results;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async function displayPopularShows() {
+    const psContainer = document.querySelector('#popular-shows');
+    getPopularShows().then((shows) => {
+      let popularShowsHTML = '';
+      shows.forEach((show) => {
+        popularShowsHTML += `<div class="card">
+        <a href="tv-details.html?id=${show.id}">
+          <img
+            src="https://image.tmdb.org/t/p/w500/${show.poster_path}"
+            class="card-img-top"
+            alt="${show.name}"
+          />
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">${show.name}</h5>
+          <p class="card-text">
+            <small class="text-muted">Aired: ${show.first_air_date}</small>
+          </p>
+        </div>
+      </div>`;
+      });
+      psContainer.innerHTML = popularShowsHTML;
+    });
+  }
+
+  displayPopularShows();
 }
 
 // ############################################################
@@ -182,7 +219,6 @@ if (window.location.href.indexOf('tv-details.html') > -1) {
     const data = await response.json();
     return data;
   };
-  console.log('TV Shows Details: ', getShowsDetails());
 
   // update show details in HTML
   const updateShowsDetails = async () => {
@@ -234,4 +270,8 @@ if (window.location.href.indexOf('tv-details.html') > -1) {
 // ############################################################
 // Search Page
 if (window.location.href.indexOf('search.html') > -1) {
+  const params = new URLSearchParams(window.location.search);
+  const term = params.get('search-term');
+  const typeMovie = params.get('movie');
+  const typeTV = params.get('tv');
 }
