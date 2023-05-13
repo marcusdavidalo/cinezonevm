@@ -10,7 +10,7 @@ window.addEventListener('load', () => {
 
 // ############################################################
 // Index Page
-if (window.location.href.indexOf('index.html') > -1) {
+if (window.location.href.indexOf('') > -1) {
   async function getNowPlayingMovies() {
     try {
       const response = await fetch(
