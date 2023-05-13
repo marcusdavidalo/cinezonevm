@@ -12,7 +12,7 @@ window.addEventListener('load', () => {
 // Index Page
 if (
   window.location.href.indexOf('index.html') ||
-  window.location.pathname === '/'
+  window.location.pathname === ''
 ) {
   async function getNowPlayingMovies() {
     try {
