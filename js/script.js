@@ -42,10 +42,17 @@ if (
     }
   }
 
+  // mdn link for the above code: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+
   const swiper = new Swiper('.swiper', {
     slidesPerView: 4,
     spaceBetween: 30,
     loop: true,
+    speed: 2000,
+    effect: 'coverflow',
+    coverflowEffect: {
+      rotate: 20,
+    },
     breakpoints: {
       640: {
         slidesPerView: 2,
@@ -59,6 +66,9 @@ if (
         slidesPerView: 4,
         spaceBetween: 30,
       },
+    },
+    autoplay: {
+      delay: 4000,
     },
   });
 
