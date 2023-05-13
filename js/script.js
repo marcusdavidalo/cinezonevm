@@ -104,7 +104,10 @@ if (
 
 // ############################################################
 // Movie Details Page
-if (window.location.href.indexOf('movie-details.html') > -1) {
+if (
+  window.location.href.indexOf('movie-details.html') ||
+  window.location.pathname === '/movie-details.html'
+) {
   const params = new URLSearchParams(window.location.search);
   const movieId = params.get('id');
 
