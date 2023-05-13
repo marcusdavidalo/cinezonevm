@@ -137,6 +137,7 @@ if (
     const movieRating = document.querySelector('#movie-details p');
     const movieReleaseDate = document.querySelector('#release-date');
     const moviePoster = document.querySelector('#movie-details img');
+    const movieBackdrop = document.querySelector('#backdrop');
     const movieOverview = document.querySelector(
       '#movie-details p:last-of-type'
     );
@@ -174,6 +175,17 @@ if (
       .join(', ');
     movieRating.innerHTML = `<i class="fas fa-star text-primary"></i> ${movieDetails.vote_average} / 10`;
     movieReleaseDate.innerText = `Release Date: ${movieDetails.release_date}`;
+    movieBackdrop.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${movieDetails.backdrop_path})`;
+    movieBackdrop.style.backgroundSize = 'cover';
+    movieBackdrop.style.backgroundPosition = 'center';
+    movieBackdrop.style.backgroundRepeat = 'no-repeat';
+    movieBackdrop.style.position = 'absolute';
+    movieBackdrop.style.top = '0';
+    movieBackdrop.style.left = '0';
+    movieBackdrop.style.height = '100vh';
+    movieBackdrop.style.width = '100vw';
+    movieBackdrop.style.zIndex = '-999';
+    movieBackdrop.style.opacity = '0.1';
   };
 
   updateMovieDetails();
@@ -246,6 +258,7 @@ if (
   const updateShowsDetails = async () => {
     const showsDetails = await getShowsDetails();
     const showsPoster = document.querySelector('#show-details img');
+    const showsBackdrop = document.querySelector('#backdrop');
     const showsTitle = document.querySelector('#show-details h2');
     const showsRating = document.querySelector('#show-details p');
     const showsLastAirDate = document.querySelector(
@@ -284,6 +297,17 @@ if (
     showsCompanies.innerText = showsDetails.production_companies
       .map((company) => company.name)
       .join(', ');
+    showsBackdrop.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${showsDetails.backdrop_path})`;
+    showsBackdrop.style.backgroundSize = 'cover';
+    showsBackdrop.style.backgroundPosition = 'center';
+    showsBackdrop.style.backgroundRepeat = 'no-repeat';
+    showsBackdrop.style.position = 'absolute';
+    showsBackdrop.style.top = '0';
+    showsBackdrop.style.left = '0';
+    showsBackdrop.style.height = '100vh';
+    showsBackdrop.style.width = '100vw';
+    showsBackdrop.style.zIndex = '-999';
+    showsBackdrop.style.opacity = '0.1';
   };
 
   updateShowsDetails();
@@ -296,9 +320,17 @@ if (
   window.location.href === `https://cinezonevm.netlify.app/search.html`
 ) {
   const params = new URLSearchParams(window.location.search);
-  const term = params.get('search-term');
+  const searchTerm = params.get('search-term');
   const typeMovie = params.get('movie');
   const typeTV = params.get('tv');
 }
 
-AOS.init();
+try {
+  AOS.init({
+    duration: 1000,
+    easing: 'ease-in-out',
+    once: false,
+  });
+} catch (error) {
+  // ulol
+}
