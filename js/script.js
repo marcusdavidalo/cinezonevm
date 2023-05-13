@@ -1,6 +1,12 @@
 // Global Variables
 const API_KEY = 'df5666577955b18078093f6c90aa38c2';
 const swiperWrapper = document.querySelector('.swiper-wrapper');
+const spinner = document.querySelector('.spinner');
+
+// Remove spinner class="show" on load
+window.addEventListener('load', () => {
+  spinner.classList.remove('show');
+});
 
 // Index Page
 if (window.location.href.indexOf('index.html') > -1) {
