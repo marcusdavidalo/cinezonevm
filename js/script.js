@@ -338,7 +338,7 @@ if (
     let resultsHTML = '';
     results.forEach((result) => {
       if (type === 'movie') {
-        resultsHTML += `<div class="card">
+        resultsHTML += `<div class="card" data-aos="zoom-in" data-aos-duration="700">
           <a href="movie-details.html?id=${result.id}">
             <img src="https://image.tmdb.org/t/p/w500/${result.poster_path}" class="card-img-top" alt="${result.title}"/>
           </a>
@@ -350,7 +350,7 @@ if (
           </div>
         </div>`;
       } else if (type === 'tv') {
-        resultsHTML += `<div class="card">
+        resultsHTML += `<div class="card" data-aos="zoom-in" data-aos-duration="700">
           <a href="tv-details.html?id=${result.id}">
             <img src="https://image.tmdb.org/t/p/w500/${result.poster_path}" class="card-img-top" alt="${result.name}"/>
           </a>
