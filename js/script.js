@@ -1,5 +1,5 @@
 // Global Variables
-const API_KEY = 'df5666577955b18078093f6c90aa38c2';
+const API_KEY = 'sfiojfoisjfoidsjfsdf';
 const swiperWrapper = document.querySelector('.swiper-wrapper');
 const spinner = document.querySelector('.spinner');
 
