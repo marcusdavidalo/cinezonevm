@@ -12,7 +12,8 @@ window.addEventListener('load', () => {
 // Index Page
 if (
   window.location.href.indexOf('index.html') > -1 ||
-  window.location.href === `https://cinezonevm.netlify.app`
+  window.location.href === 'https://cinezonevm.netlify.app' || // for Netlify
+  window.location.href === 'https://cinezonevm.netlify.app/' // for Netlify im so done with this
 ) {
   async function getNowPlayingMovies() {
     try {
