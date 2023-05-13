@@ -47,8 +47,7 @@ if (
   const swiper = new Swiper('.swiper', {
     slidesPerView: 4,
     spaceBetween: 30,
-    loop: true,
-    speed: 2000,
+    speed: 1000,
     effect: 'coverflow',
     coverflowEffect: {
       rotate: 20,
@@ -89,7 +88,7 @@ if (
     getPopularMovies().then((movies) => {
       let popularMoviesHTML = '';
       movies.forEach((movie) => {
-        popularMoviesHTML += `<div class="card">
+        popularMoviesHTML += `<div class="card" data-aos="flip-up" data-aos-duration="700">
               <a href="movie-details.html?id=${movie.id}">
                 <img
                   src="https://image.tmdb.org/t/p/w500/${movie.poster_path}"
@@ -301,3 +300,5 @@ if (
   const typeMovie = params.get('movie');
   const typeTV = params.get('tv');
 }
+
+AOS.init();
