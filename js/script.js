@@ -10,10 +10,7 @@ window.addEventListener('load', () => {
 
 // ############################################################
 // Index Page
-if (
-  window.location.href.indexOf('index.html') ||
-  window.location.pathname === ''
-) {
+if (window.location.href.indexOf('index.html') > -1) {
   async function getNowPlayingMovies() {
     try {
       const response = await fetch(
@@ -104,10 +101,7 @@ if (
 
 // ############################################################
 // Movie Details Page
-if (
-  window.location.href.indexOf('movie-details.html') ||
-  window.location.pathname === '/movie-details.html'
-) {
+if (window.location.href.indexOf('movie-details.html') > -1) {
   const params = new URLSearchParams(window.location.search);
   const movieId = params.get('id');
 
