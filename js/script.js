@@ -317,12 +317,91 @@ if (
 // Search Page
 if (
   window.location.href.indexOf('search.html') > -1 ||
-  window.location.href === `https://cinezonevm.netlify.app/search.html`
+  window.location.href === 'https://cinezonevm.netlify.app/search.html'
 ) {
   const params = new URLSearchParams(window.location.search);
   const searchTerm = params.get('search-term');
-  const typeMovie = params.get('movie');
-  const typeTV = params.get('tv');
+  const type = params.get('type');
+
+  let currentPage = 1;
+
+  const getSearched = async (page) => {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/search/${type}?api_key=${API_KEY}&query=${searchTerm}&page=${page}`
+    );
+    const data = await response.json();
+    return data;
+  };
+
+  const renderResults = (results) => {
+    const resultsContainer = document.getElementById('search-results');
+    let resultsHTML = '';
+    results.forEach((result) => {
+      if (type === 'movie') {
+        resultsHTML += `<div class="card">
+          <a href="movie-details.html?id=${result.id}">
+            <img src="https://image.tmdb.org/t/p/w500/${result.poster_path}" class="card-img-top" alt="${result.title}"/>
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">${result.title}</h5>
+            <p class="card-text">
+              <small class="text-muted">Released: ${result.release_date}</small>
+            </p>
+          </div>
+        </div>`;
+      } else if (type === 'tv') {
+        resultsHTML += `<div class="card">
+          <a href="tv-details.html?id=${result.id}">
+            <img src="https://image.tmdb.org/t/p/w500/${result.poster_path}" class="card-img-top" alt="${result.name}"/>
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">${result.name}</h5>
+            <p class="card-text">
+              <small class="text-muted">Aired: ${result.first_air_date}</small>
+            </p>
+          </div>
+        </div>`;
+      }
+    });
+    resultsContainer.innerHTML = resultsHTML;
+  };
+
+  const updatePageCounter = (page, totalPages) => {
+    const pageCounter = document.querySelector('.page-counter');
+    pageCounter.textContent = `Page ${page} of ${totalPages}`;
+  };
+
+  const handlePrevClick = async () => {
+    if (currentPage > 1) {
+      currentPage--;
+      const results = await getSearched(currentPage);
+      renderResults(results.results);
+      updatePageCounter(currentPage, results.total_pages);
+    }
+  };
+
+  const handleNextClick = async () => {
+    const results = await getSearched(currentPage + 1);
+    if (results.page <= results.total_pages) {
+      currentPage++;
+      renderResults(results.results);
+      updatePageCounter(currentPage, results.total_pages);
+    }
+  };
+
+  const initPagination = async () => {
+    const results = await getSearched(currentPage);
+    renderResults(results.results);
+    updatePageCounter(currentPage, results.total_pages);
+
+    const prevButton = document.getElementById('prev');
+    prevButton.addEventListener('click', handlePrevClick);
+
+    const nextButton = document.getElementById('next');
+    nextButton.addEventListener('click', handleNextClick);
+  };
+
+  initPagination();
 }
 
 try {
