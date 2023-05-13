@@ -8,6 +8,7 @@ window.addEventListener('load', () => {
   spinner.classList.remove('show');
 });
 
+// ############################################################
 // Index Page
 if (window.location.href.indexOf('index.html') > -1) {
   async function getNowPlayingMovies() {
@@ -98,6 +99,7 @@ if (window.location.href.indexOf('index.html') > -1) {
   displayPopularMovies();
 }
 
+// ############################################################
 // Movie Details Page
 if (window.location.href.indexOf('movie-details.html') > -1) {
   const params = new URLSearchParams(window.location.search);
@@ -161,14 +163,75 @@ if (window.location.href.indexOf('movie-details.html') > -1) {
   updateMovieDetails();
 }
 
+// ############################################################
 // TV Shows Page
 if (window.location.href.indexOf('shows.html') > -1) {
 }
 
+// ############################################################
 // TV Details Page
 if (window.location.href.indexOf('tv-details.html') > -1) {
+  const params = new URLSearchParams(window.location.search);
+  const showsId = params.get('id');
+
+  // get shows details from TMDB API
+  const getShowsDetails = async () => {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/tv/${showsId}?api_key=${API_KEY}`
+    );
+    const data = await response.json();
+    return data;
+  };
+  console.log('TV Shows Details: ', getShowsDetails());
+
+  // update show details in HTML
+  const updateShowsDetails = async () => {
+    const showsDetails = await getShowsDetails();
+    const showsPoster = document.querySelector('#show-details img');
+    const showsTitle = document.querySelector('#show-details h2');
+    const showsRating = document.querySelector('#show-details p');
+    const showsLastAirDate = document.querySelector(
+      '#show-details p:nth-child(3)'
+    );
+    const showsOverview = document.querySelector(
+      '#show-details p:last-of-type'
+    );
+    const showsGenres = document.querySelector(
+      '#show-details .list-group:first-of-type'
+    );
+    const showsEpisodeNumber = document.querySelector(
+      '.details-bottom ul li:nth-child(1)'
+    );
+    const showsLastEpisode = document.querySelector(
+      '.details-bottom ul li:nth-child(2)'
+    );
+    const showsStatus = document.querySelector(
+      '.details-bottom ul li:nth-of-type(3)'
+    );
+    const showsCompanies = document.querySelector(
+      '#show-details .list-group:last-child'
+    );
+
+    showsPoster.src = `https://image.tmdb.org/t/p/w500${showsDetails.poster_path}`;
+    showsTitle.innerText = showsDetails.original_name;
+    showsRating.innerHTML = `<i class="fas fa-star text-primary"></i> ${showsDetails.vote_average} / 10`;
+    showsLastAirDate.innerText = `Last Air Date: ${showsDetails.last_air_date}`;
+    showsOverview.innerText = showsDetails.overview;
+    showsGenres.innerHTML = showsDetails.genres
+      .map((genres) => `<li>${genres.name}</li>`)
+      .join('');
+    showsEpisodeNumber.innerHTML = `<span class="text-secondary">Number of Episodes:</span> ${showsDetails.number_of_episodes.toLocaleString()}`;
+    showsLastEpisode.innerHTML = `<span class="text-secondary">Last Episode To Air:</span> ${showsDetails.last_episode_to_air.name.toLocaleString()}`;
+    showsStatus.innerHTML = `<span class="text-secondary">Status:</span> ${showsDetails.status}`;
+    showsCompanies.innerText = showsDetails.production_companies
+      .map((company) => company.name)
+      .join(', ');
+  };
+
+  updateShowsDetails();
 }
 
+// ############################################################
 // Search Page
 if (window.location.href.indexOf('search.html') > -1) {
 }
