@@ -175,7 +175,7 @@ if (
       .join(', ');
     movieRating.innerHTML = `<i class="fas fa-star text-primary"></i> ${movieDetails.vote_average} / 10`;
     movieReleaseDate.innerText = `Release Date: ${movieDetails.release_date}`;
-    movieBackdrop.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${movieDetails.backdrop_path})`;
+    movieBackdrop.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${movieDetails.backdrop_path})`;
     movieBackdrop.style.backgroundSize = 'cover';
     movieBackdrop.style.backgroundPosition = 'center';
     movieBackdrop.style.backgroundRepeat = 'no-repeat';
@@ -297,7 +297,7 @@ if (
     showsCompanies.innerText = showsDetails.production_companies
       .map((company) => company.name)
       .join(', ');
-    showsBackdrop.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${showsDetails.backdrop_path})`;
+    showsBackdrop.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${showsDetails.backdrop_path})`;
     showsBackdrop.style.backgroundSize = 'cover';
     showsBackdrop.style.backgroundPosition = 'center';
     showsBackdrop.style.backgroundRepeat = 'no-repeat';
