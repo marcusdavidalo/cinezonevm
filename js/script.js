@@ -43,7 +43,7 @@ if (
   };
 
   const swiper = new Swiper('.swiper', {
-    slidesPerView: 4,
+    slidesPerView: 2,
     spaceBetween: 30,
     speed: 1000,
     effect: 'coverflow',
