@@ -1,21 +1,21 @@
-# CineZoneVM
+# CineZoneVM :movie_camera:
 
-CineZoneVM is a web application that allows users to browse for movies. It is a project from **KodeGo** bootcamp, a coding school that equips students with critical and highly-sought after skills in web development.
+CineZoneVM is a web application that allows users to browse for movies. It is a project from **KodeGo Bootcamp**, a coding school that equips students with critical and highly-sought after skills in web development.
 
-The project is hosted in **Netlify** as: [cinezonevm.netlify.app](https://cinezonevm.netlify.app/).
+The project is hosted in **Netlify** as: [cinezonevm.netlify.app](https://cinezonevm.netlify.app/). :globe_with_meridians:
 
-## Features
+## Features :page_with_curl:
 
 - Users can view the now showing and popular movies on the home page.
 - Users can search for movies and tv shows.
 
-## Technologies
+## Technologies :computer:
 
 - HTML, CSS, and JavaScript for the front-end.
 - Javascript for the back-end.
 - TMDB API for the movie data and images.
 
-## Installation
+## Installation :arrow_down_small:
 
 To run the project locally, follow these steps:
 
@@ -24,3 +24,9 @@ To run the project locally, follow these steps:
 3. Install **liveserver** in VSCode Extensions
 4. Right Click on the **index.html**
 5. Click **Open With Live Server**
+
+### Team Vitamax :stuck_out_tongue_closed_eyes:
+
+- _Marcus David Alo_
+- _Jared Eiden Belvis_
+- _Mahdi Atef Adas_
