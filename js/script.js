@@ -408,16 +408,6 @@ if (
   initPagination();
 }
 
-try {
-  AOS.init({
-    duration: 1000,
-    easing: 'ease-in-out',
-    once: false,
-  });
-} catch (error) {
-  // ignoring the error because its not from my end.
-}
-
 // Links and References:
 // https://developer.mozilla.org/en-US/docs/Web/API/Location
 // https://swiperjs.com/

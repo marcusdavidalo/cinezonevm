@@ -182,5 +182,16 @@
     <div class="spinner show"></div>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="./js/script.js" defer></script>
+    <script>
+      try {
+        AOS.init({
+          duration: 1000,
+          easing: 'ease-in-out',
+          once: false,
+        });
+      } catch (error) {
+        // ignoring the error because its not from my end.
+      }
+    </script>
   </body>
 </html>
