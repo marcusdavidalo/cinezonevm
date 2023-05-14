@@ -42,8 +42,6 @@ if (
     }
   }
 
-  // mdn link for the above code: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-
   const swiper = new Swiper('.swiper', {
     slidesPerView: 4,
     spaceBetween: 30,
@@ -413,3 +411,11 @@ try {
 } catch (error) {
   // ulol
 }
+
+// Links and References:
+// https://developer.mozilla.org/en-US/docs/Web/API/Location
+// https://swiperjs.com/
+// https://www.themoviedb.org/
+// https://image.tmdb.org/t/p/w500
+// https://api.themoviedb.org/3/movie/popular?api_key=df5666577955b18078093f6c90aa38c2
+// https://api.themoviedb.org/3/tv/popular?api_key=df5666577955b18078093f6c90aa38c2
