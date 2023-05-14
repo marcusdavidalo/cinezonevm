@@ -137,6 +137,7 @@ if (
     const movieRating = document.querySelector('#movie-details p');
     const movieReleaseDate = document.querySelector('#release-date');
     const moviePoster = document.querySelector('#movie-details img');
+    const moviePage = document.querySelector('#movie-details a');
     const movieBackdrop = document.querySelector('#backdrop');
     const movieOverview = document.querySelector(
       '#movie-details p:last-of-type'
@@ -162,6 +163,7 @@ if (
 
     movieTitle.innerText = movieDetails.original_title;
     moviePoster.src = `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`;
+    moviePage.href = `${movieDetails.homepage}`;
     movieOverview.innerText = movieDetails.overview;
     movieGenres.innerHTML = movieDetails.genres
       .map((genre) => `<li>${genre.name}</li>`)
