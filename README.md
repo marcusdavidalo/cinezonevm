@@ -1,6 +1,6 @@
 # CineZoneVM
 
-CineZoneVM is a web application that allows users to browse and watch movies from different genres and categories. It is a project from **KodeGo** bootcamp, a coding school that equips students with critical and highly-sought after skills in web development.
+CineZoneVM is a web application that allows users to browse for movies. It is a project from **KodeGo** bootcamp, a coding school that equips students with critical and highly-sought after skills in web development.
 
 The project is hosted in **Netlify** as: [cinezonevm.netlify.app](https://cinezonevm.netlify.app/).
 
