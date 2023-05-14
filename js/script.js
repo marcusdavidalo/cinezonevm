@@ -419,3 +419,4 @@ try {
 // https://image.tmdb.org/t/p/w500
 // https://api.themoviedb.org/3/movie/popular?api_key=df5666577955b18078093f6c90aa38c2
 // https://api.themoviedb.org/3/tv/popular?api_key=df5666577955b18078093f6c90aa38c2
+// https://michalsnik.github.io/aos/
