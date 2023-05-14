@@ -10,11 +10,9 @@ window.addEventListener('load', () => {
 // ############################################################
 // Index Page
 if (
-  [
-    'index.html',
-    'https://cinezonevm.netlify.app',
-    'https://cinezonevm.netlify.app/',
-  ].includes(window.location.href)
+  window.location.href.indexOf('index.html') > -1 ||
+  window.location.href === 'https://cinezonevm.netlify.app' || // for Netlify
+  window.location.href === 'https://cinezonevm.netlify.app/' // for Netlify im so done with this
 ) {
   const swiperWrapper = document.querySelector('.swiper-wrapper');
   const getNowPlayingMovies = async () => {
@@ -117,10 +115,8 @@ if (
 // ############################################################
 // Movie Details Page
 if (
-  [
-    'movie-details.html',
-    'https://cinezonevm.netlify.app/movie-details.html',
-  ].includes(window.location.href)
+  window.location.href.indexOf('movie-details.html') > -1 ||
+  window.location.href === `https://cinezonevm.netlify.app/movie-details.html`
 ) {
   const params = new URLSearchParams(window.location.search);
   const movieId = params.get('id');
@@ -200,9 +196,8 @@ if (
 // ############################################################
 // TV Shows Page
 if (
-  ['shows.html', 'https://cinezonevm.netlify.app/shows.html'].includes(
-    window.location.href
-  )
+  window.location.href.indexOf('shows.html') > -1 ||
+  window.location.href === `https://cinezonevm.netlify.app/shows.html`
 ) {
   const getPopularShows = async () => {
     try {
@@ -246,10 +241,8 @@ if (
 // ############################################################
 // TV Details Page
 if (
-  [
-    'tv-details.html',
-    'https://cinezonevm.netlify.app/tv-details.html',
-  ].includes(window.location.href)
+  window.location.href.indexOf('tv-details.html') > -1 ||
+  window.location.href === `https://cinezonevm.netlify.app/tv-details.html`
 ) {
   const params = new URLSearchParams(window.location.search);
   const showsId = params.get('id');
@@ -327,9 +320,8 @@ if (
 // ############################################################
 // Search Page
 if (
-  ['search.html', 'https://cinezonevm.netlify.app/search.html'].includes(
-    window.location.href
-  )
+  window.location.href.indexOf('search.html') > -1 ||
+  window.location.href === 'https://cinezonevm.netlify.app/search.html'
 ) {
   const params = new URLSearchParams(window.location.search);
   const searchTerm = params.get('search-term');
