@@ -27,6 +27,6 @@ To run the project locally, follow these steps:
 
 ### Team Vitamax :stuck_out_tongue_closed_eyes:
 
-- _Marcus David Alo_
-- _Jared Eiden Belvis_
-- _Mahdi Atef Adas_
+- _Marcus David Alo_ :satisfied:
+- _Jared Eiden Belvis_ :satisfied:
+- _Mahdi Atef Adas_ :satisfied:
