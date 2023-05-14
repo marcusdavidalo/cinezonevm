@@ -260,6 +260,7 @@ if (
   const updateShowsDetails = async () => {
     const showsDetails = await getShowsDetails();
     const showsPoster = document.querySelector('#show-details img');
+    const showsPage = document.querySelector('#show-details a');
     const showsBackdrop = document.querySelector('#backdrop');
     const showsTitle = document.querySelector('#show-details h2');
     const showsRating = document.querySelector('#show-details p');
@@ -286,6 +287,7 @@ if (
     );
 
     showsPoster.src = `https://image.tmdb.org/t/p/w500${showsDetails.poster_path}`;
+    showsPage.href = `${showsDetails.homepage}`;
     showsTitle.innerText = showsDetails.original_name;
     showsRating.innerHTML = `<i class="fas fa-star text-primary"></i> ${showsDetails.vote_average} / 10`;
     showsLastAirDate.innerText = `Last Air Date: ${showsDetails.last_air_date}`;
