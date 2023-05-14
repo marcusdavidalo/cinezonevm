@@ -15,7 +15,7 @@ if (
   window.location.href === 'https://cinezonevm.netlify.app' || // for Netlify
   window.location.href === 'https://cinezonevm.netlify.app/' // for Netlify im so done with this
 ) {
-  async function getNowPlayingMovies() {
+  const getNowPlayingMovies = async () => {
     try {
       const response = await fetch(
         `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`
@@ -40,7 +40,7 @@ if (
     } catch (error) {
       console.log('An error occurred:', error);
     }
-  }
+  };
 
   const swiper = new Swiper('.swiper', {
     slidesPerView: 4,
@@ -71,7 +71,7 @@ if (
     },
   });
 
-  async function getPopularMovies() {
+  const getPopularMovies = async () => {
     try {
       const response = await fetch(
         `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
@@ -81,9 +81,9 @@ if (
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
-  async function displayPopularMovies() {
+  const displayPopularMovies = async () => {
     const pmContainer = document.querySelector('#popular-movies');
     getPopularMovies().then((movies) => {
       let popularMoviesHTML = '';
@@ -106,7 +106,7 @@ if (
       });
       pmContainer.innerHTML = popularMoviesHTML;
     });
-  }
+  };
 
   getNowPlayingMovies();
   displayPopularMovies();
@@ -197,7 +197,7 @@ if (
   window.location.href.indexOf('shows.html') > -1 ||
   window.location.href === `https://cinezonevm.netlify.app/shows.html`
 ) {
-  async function getPopularShows() {
+  const getPopularShows = async () => {
     try {
       const response = await fetch(
         `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}`
@@ -207,8 +207,8 @@ if (
     } catch (error) {
       console.log(error);
     }
-  }
-  async function displayPopularShows() {
+  };
+  const displayPopularShows = async () => {
     const psContainer = document.querySelector('#popular-shows');
     getPopularShows().then((shows) => {
       let popularShowsHTML = '';
@@ -231,7 +231,7 @@ if (
       });
       psContainer.innerHTML = popularShowsHTML;
     });
-  }
+  };
 
   displayPopularShows();
 }
