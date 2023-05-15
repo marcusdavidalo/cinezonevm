@@ -60,7 +60,7 @@ if (
           ${
             hasPoster(movie)
               ? `<img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}"/>`
-              : `<img src="./images/no-image.jpeg" alt="No Image Available"/>`
+              : `<img src="./images/no-image.jpg" alt="No Image Available"/>`
           }
           </a>
           <h4 class="swiper-rating">
@@ -127,7 +127,7 @@ if (
               ${
                 hasPoster(movie)
                   ? `<img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}"/>`
-                  : `<img src="./images/no-image.jpeg" alt="No Image Available"/>`
+                  : `<img src="./images/no-image.jpg" alt="No Image Available"/>`
               }
               </a>
               <div class="card-body">
@@ -173,6 +173,9 @@ if (
     const movieRating = document.querySelector('#movie-details p');
     const movieReleaseDate = document.querySelector('#release-date');
     const moviePoster = document.querySelector('#movie-details img');
+    const hasPoster = (movieDetails) => {
+      return movieDetails.poster_path !== null;
+    };
     const moviePage = document.querySelector('#movie-details a');
     const movieBackdrop = document.querySelector('#backdrop');
     const movieOverview = document.querySelector(
@@ -213,7 +216,11 @@ if (
       .join(', ');
     movieRating.innerHTML = `<i class="fas fa-star text-primary"></i> ${movieDetails.vote_average} / 10`;
     movieReleaseDate.innerText = `Release Date: ${movieDetails.release_date}`;
-    movieBackdrop.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${movieDetails.backdrop_path})`;
+    if (hasPoster(movieDetails)) {
+      moviePoster.src = `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`;
+    } else {
+      moviePoster.src = './images/no-image.jpg';
+    }
     movieBackdrop.style.backgroundSize = 'cover';
     movieBackdrop.style.backgroundPosition = 'center';
     movieBackdrop.style.backgroundRepeat = 'no-repeat';
@@ -258,9 +265,9 @@ if (
         popularShowsHTML += `<div class="card">
         <a href="tv-details.html?id=${show.id}">
         ${
-          hasPoster(movie)
+          hasPoster(show)
             ? `<img src="https://image.tmdb.org/t/p/w500/${show.poster_path}" alt="${show.title}"/>`
-            : `<img src="./images/no-image.jpeg" alt="No Image Available"/>`
+            : `<img src="./images/no-image.jpg" alt="No Image Available"/>`
         }
         </a>
         <div class="card-body">
@@ -300,6 +307,9 @@ if (
   const updateShowsDetails = async () => {
     const showsDetails = await getShowsDetails();
     const showsPoster = document.querySelector('#show-details img');
+    const hasShowsPoster = (showsDetails) => {
+      return showsDetails.poster_path !== null;
+    };
     const showsPage = document.querySelector('#show-details a');
     const showsBackdrop = document.querySelector('#backdrop');
     const showsTitle = document.querySelector('#show-details h2');
@@ -326,7 +336,10 @@ if (
       '#show-details .list-group:last-child'
     );
 
-    showsPoster.src = `https://image.tmdb.org/t/p/w500${showsDetails.poster_path}`;
+    showsPoster.src = hasShowsPoster(showsDetails)
+      ? `https://image.tmdb.org/t/p/w500${showsDetails.poster_path}`
+      : './images/no-image.jpg';
+
     showsPage.href = `${showsDetails.homepage}`;
     showsTitle.innerText = showsDetails.original_name;
     showsRating.innerHTML = `<i class="fas fa-star text-primary"></i> ${showsDetails.vote_average} / 10`;
@@ -341,7 +354,6 @@ if (
     showsCompanies.innerText = showsDetails.production_companies
       .map((company) => company.name)
       .join(', ');
-    showsBackdrop.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${showsDetails.backdrop_path})`;
     showsBackdrop.style.backgroundSize = 'cover';
     showsBackdrop.style.backgroundPosition = 'center';
     showsBackdrop.style.backgroundRepeat = 'no-repeat';
@@ -417,7 +429,7 @@ if (
           ${
             hasPoster(result)
               ? `<img src="https://image.tmdb.org/t/p/w500/${result.poster_path}" alt="${result.title}"/>`
-              : `<img src="./images/no-image.jpeg" alt="No Image Available"/>`
+              : `<img src="./images/no-image.jpg" alt="No Image Available"/>`
           }
           </a>
           <div class="card-body">
@@ -433,7 +445,7 @@ if (
           ${
             hasPoster(result)
               ? `<img src="https://image.tmdb.org/t/p/w500/${result.poster_path}" alt="${result.title}"/>`
-              : `<img src="./images/no-image.jpeg" alt="No Image Available"/>`
+              : `<img src="./images/no-image.jpg" alt="No Image Available"/>`
           }
           </a>
           <div class="card-body">
