@@ -12,7 +12,7 @@ window.addEventListener('load', () => {
 if (
   window.location.href.indexOf('index.html') > -1 ||
   window.location.href === 'https://cinezonevm.netlify.app' || // for Netlify
-  window.location.href === 'https://cinezonevm.netlify.app/' // for Netlify im so done with this
+  window.location.href === 'https://cinezonevm.netlify.app/' // for Netlify
 ) {
   const swiperWrapper = document.querySelector('.swiper-wrapper');
   const getNowPlayingMovies = async () => {
@@ -370,12 +370,12 @@ if (
     resultsContainer.innerHTML = resultsHTML;
   };
 
-  const updatePageCounter = (page, totalPages) => {
+  const updatePageCounter = (page, total_pages) => {
     const pageCounter = document.querySelector('.page-counter');
-    pageCounter.textContent = `Page ${page} of ${totalPages}`;
+    pageCounter.textContent = `Page ${page} of ${total_pages}`;
   };
 
-  const handlePrevClick = async () => {
+  const prevClick = async () => {
     if (currentPage > 1) {
       currentPage--;
       const results = await getSearched(currentPage);
@@ -384,7 +384,7 @@ if (
     }
   };
 
-  const handleNextClick = async () => {
+  const nextClick = async () => {
     const results = await getSearched(currentPage + 1);
     if (results.page <= results.total_pages) {
       currentPage++;
@@ -399,10 +399,10 @@ if (
     updatePageCounter(currentPage, results.total_pages);
 
     const prevButton = document.getElementById('prev');
-    prevButton.addEventListener('click', handlePrevClick);
+    prevButton.addEventListener('click', prevClick);
 
     const nextButton = document.getElementById('next');
-    nextButton.addEventListener('click', handleNextClick);
+    nextButton.addEventListener('click', nextClick);
   };
 
   initPagination();
