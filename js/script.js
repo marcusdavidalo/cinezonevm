@@ -81,8 +81,6 @@ if (
     spaceBetween: 30,
     speed: 1000,
     effect: 'coverflow',
-    disableOnInteraction: false,
-    pauseOnMouseEnter: true,
     coverflowEffect: {
       rotate: 20,
     },
@@ -102,6 +100,8 @@ if (
     },
     autoplay: {
       delay: 4000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
     },
   });
 
