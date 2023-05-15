@@ -42,6 +42,10 @@ if (
     searchButton.style.cursor = '';
   }
 
+  const hasPoster = (movie) => {
+    return movie.poster_path !== null;
+  };
+
   const getNowPlayingMovies = async () => {
     try {
       const response = await fetch(
@@ -53,13 +57,16 @@ if (
         swiperSlide.classList.add('swiper-slide');
         swiperSlide.innerHTML = `
           <a href="movie-details.html?id=${movie.id}">
-            <img
-              src="https://image.tmdb.org/t/p/w500/${movie.poster_path}"
-              alt="${movie.title}"
-            />
+          ${
+            hasPoster(movie)
+              ? `<img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}"/>`
+              : `<img src="./images/no-image.jpeg" alt="No Image Available"/>`
+          }
           </a>
           <h4 class="swiper-rating">
-            <i class="fas fa-star text-secondary"></i> ${movie.vote_average} / 10
+            <i class="fas fa-star text-secondary"></i> ${
+              movie.vote_average
+            } / 10
           </h4>
         `;
         swiperWrapper.appendChild(swiperSlide);
@@ -117,16 +124,18 @@ if (
       movies.forEach((movie) => {
         popularMoviesHTML += `<div class="card" data-aos="flip-up" data-aos-duration="700">
               <a href="movie-details.html?id=${movie.id}">
-                <img
-                  src="https://image.tmdb.org/t/p/w500/${movie.poster_path}"
-                  class="card-img-top"
-                  alt="${movie.title}"
-                />
+              ${
+                hasPoster(movie)
+                  ? `<img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}"/>`
+                  : `<img src="./images/no-image.jpeg" alt="No Image Available"/>`
+              }
               </a>
               <div class="card-body">
                 <h5 class="card-title">${movie.title}</h5>
                 <p class="card-text">
-                  <small class="text-muted">Release: ${movie.release_date}</small>
+                  <small class="text-muted">Release: ${
+                    movie.release_date
+                  }</small>
                 </p>
               </div>
             </div>`;
@@ -226,6 +235,10 @@ if (
   window.location.href.indexOf('shows.html') > -1 ||
   window.location.href === `https://cinezonevm.netlify.app/shows.html`
 ) {
+  const hasPoster = (show) => {
+    return show.poster_path !== null;
+  };
+
   const getPopularShows = async () => {
     try {
       const response = await fetch(
@@ -244,11 +257,11 @@ if (
       shows.forEach((show) => {
         popularShowsHTML += `<div class="card">
         <a href="tv-details.html?id=${show.id}">
-          <img
-            src="https://image.tmdb.org/t/p/w500/${show.poster_path}"
-            class="card-img-top"
-            alt="${show.name}"
-          />
+        ${
+          hasPoster(movie)
+            ? `<img src="https://image.tmdb.org/t/p/w500/${show.poster_path}" alt="${show.title}"/>`
+            : `<img src="./images/no-image.jpeg" alt="No Image Available"/>`
+        }
         </a>
         <div class="card-body">
           <h5 class="card-title">${show.name}</h5>
@@ -390,6 +403,10 @@ if (
     return data;
   };
 
+  const hasPoster = (result) => {
+    return result.poster_path !== null;
+  };
+
   const displayResults = (results) => {
     const resultsContainer = document.getElementById('search-results');
     let resultsHTML = '';
@@ -397,7 +414,11 @@ if (
       if (type === 'movie') {
         resultsHTML += `<div class="card" data-aos="zoom-in" data-aos-duration="700">
           <a href="movie-details.html?id=${result.id}">
-            <img src="https://image.tmdb.org/t/p/w500/${result.poster_path}" class="card-img-top" alt="${result.title}"/>
+          ${
+            hasPoster(result)
+              ? `<img src="https://image.tmdb.org/t/p/w500/${result.poster_path}" alt="${result.title}"/>`
+              : `<img src="./images/no-image.jpeg" alt="No Image Available"/>`
+          }
           </a>
           <div class="card-body">
             <h5 class="card-title">${result.title}</h5>
@@ -409,7 +430,11 @@ if (
       } else if (type === 'tv') {
         resultsHTML += `<div class="card" data-aos="zoom-in" data-aos-duration="700">
           <a href="tv-details.html?id=${result.id}">
-            <img src="https://image.tmdb.org/t/p/w500/${result.poster_path}" class="card-img-top" alt="${result.name}"/>
+          ${
+            hasPoster(result)
+              ? `<img src="https://image.tmdb.org/t/p/w500/${result.poster_path}" alt="${result.title}"/>`
+              : `<img src="./images/no-image.jpeg" alt="No Image Available"/>`
+          }
           </a>
           <div class="card-body">
             <h5 class="card-title">${result.name}</h5>
