@@ -7,10 +7,31 @@ window.addEventListener('load', () => {
   spinner.classList.remove('show');
 });
 
-const searchTermInput = document.querySelector('#search-term');
-const searchButton = document.querySelector('.btn');
+// ############################################################
+// Index Page
+if (
+  window.location.href.indexOf('index.html') > -1 ||
+  window.location.href === 'https://cinezonevm.netlify.app' || // for Netlify
+  window.location.href === 'https://cinezonevm.netlify.app/' // for Netlify
+) {
+  const swiperWrapper = document.querySelector('.swiper-wrapper');
 
-searchTermInput.addEventListener('input', () => {
+  const searchTermInput = document.querySelector('#search-term');
+  const searchButton = document.querySelector('.btn');
+
+  searchTermInput.addEventListener('input', () => {
+    if (searchTermInput.value.trim() === '') {
+      searchButton.disabled = true;
+      searchButton.style.opacity = '0.5';
+      searchButton.style.cursor = 'not-allowed';
+    } else {
+      searchButton.disabled = false;
+      searchButton.style.opacity = '';
+      searchButton.style.cursor = '';
+    }
+  });
+
+  //
   if (searchTermInput.value.trim() === '') {
     searchButton.disabled = true;
     searchButton.style.opacity = '0.5';
@@ -20,26 +41,7 @@ searchTermInput.addEventListener('input', () => {
     searchButton.style.opacity = '';
     searchButton.style.cursor = '';
   }
-});
 
-if (searchTermInput.value.trim() === '') {
-  searchButton.disabled = true;
-  searchButton.style.opacity = '0.5';
-  searchButton.style.cursor = 'not-allowed';
-} else {
-  searchButton.disabled = false;
-  searchButton.style.opacity = '';
-  searchButton.style.cursor = '';
-}
-
-// ############################################################
-// Index Page
-if (
-  window.location.href.indexOf('index.html') > -1 ||
-  window.location.href === 'https://cinezonevm.netlify.app' || // for Netlify
-  window.location.href === 'https://cinezonevm.netlify.app/' // for Netlify
-) {
-  const swiperWrapper = document.querySelector('.swiper-wrapper');
   const getNowPlayingMovies = async () => {
     try {
       const response = await fetch(
@@ -351,6 +353,32 @@ if (
   const params = new URLSearchParams(window.location.search);
   const searchTerm = params.get('search-term');
   const type = params.get('type');
+
+  const searchTermInput = document.querySelector('#search-term');
+  const searchButton = document.querySelector('.btn');
+
+  searchTermInput.addEventListener('input', () => {
+    if (searchTermInput.value.trim() === '') {
+      searchButton.disabled = true;
+      searchButton.style.opacity = '0.5';
+      searchButton.style.cursor = 'not-allowed';
+    } else {
+      searchButton.disabled = false;
+      searchButton.style.opacity = '';
+      searchButton.style.cursor = '';
+    }
+  });
+
+  //
+  if (searchTermInput.value.trim() === '') {
+    searchButton.disabled = true;
+    searchButton.style.opacity = '0.5';
+    searchButton.style.cursor = 'not-allowed';
+  } else {
+    searchButton.disabled = false;
+    searchButton.style.opacity = '';
+    searchButton.style.cursor = '';
+  }
 
   let currentPage = 1;
 
