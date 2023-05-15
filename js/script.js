@@ -370,9 +370,9 @@ if (
     resultsContainer.innerHTML = resultsHTML;
   };
 
-  const updatePageCounter = (page, total_pages) => {
+  const updatePageCounter = (page, totalPages) => {
     const pageCounter = document.querySelector('.page-counter');
-    pageCounter.textContent = `Page ${page} of ${total_pages}`;
+    pageCounter.textContent = `Page ${page} of ${totalPages}`;
   };
 
   const prevClick = async () => {
