@@ -20,10 +20,9 @@ The project is hosted in **Netlify** as: [cinezonevm.netlify.app](https://cinezo
 To run the project locally, follow these steps:
 
 1. Clone the repository from GitHub: `git clone https://github.com/marcusdavidalo/cinezonevm.git`
-2. Navigate to the project folder: `cd cinezonevm`
-3. Install **liveserver** in VSCode Extensions
-4. Right Click on the **index.html**
-5. Click **Open With Live Server**
+2. Install **liveserver** in VSCode Extensions
+3. Right Click on the **index.html**
+4. Click **Open With Live Server**
 
 ### Team Vitamax :stuck_out_tongue_closed_eyes:
 
