@@ -7,6 +7,31 @@ window.addEventListener('load', () => {
   spinner.classList.remove('show');
 });
 
+const searchTermInput = document.querySelector('#search-term');
+const searchButton = document.querySelector('.btn');
+
+searchTermInput.addEventListener('input', () => {
+  if (searchTermInput.value.trim() === '') {
+    searchButton.disabled = true;
+    searchButton.style.opacity = '0.5';
+    searchButton.style.cursor = 'not-allowed';
+  } else {
+    searchButton.disabled = false;
+    searchButton.style.opacity = '';
+    searchButton.style.cursor = '';
+  }
+});
+
+if (searchTermInput.value.trim() === '') {
+  searchButton.disabled = true;
+  searchButton.style.opacity = '0.5';
+  searchButton.style.cursor = 'not-allowed';
+} else {
+  searchButton.disabled = false;
+  searchButton.style.opacity = '';
+  searchButton.style.cursor = '';
+}
+
 // ############################################################
 // Index Page
 if (
